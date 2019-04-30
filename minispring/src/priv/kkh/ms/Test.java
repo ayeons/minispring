@@ -31,7 +31,8 @@ public  class Test extends AAA{
 	@RequestMapping("/test/")
 	public String aaaa(HttpServletRequest req) {
 		System.out.println("aaaa    :    "+req);
-		return "½ÇÇà";
+		
+		return "home";
 	}
 	
 }

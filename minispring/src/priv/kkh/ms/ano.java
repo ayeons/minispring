@@ -10,4 +10,5 @@ class ano {
 	public ano(){
 		System.out.println("ano init");
 	}
+	
 }

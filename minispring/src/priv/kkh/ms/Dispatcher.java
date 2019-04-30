@@ -1,28 +1,17 @@
 package priv.kkh.ms;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.catalina.startup.ClassLoaderFactory;
-import org.apache.tomcat.jdbc.pool.ClassLoaderUtil;
-
-import com.sun.xml.internal.ws.server.DefaultResourceInjector;
 
 import priv.kkh.ms.annotation.Controller;
 import priv.kkh.ms.annotation.RequestMapping;
@@ -78,7 +67,7 @@ public class Dispatcher extends HttpServlet{
 	
 	  public static void main(String[] args) {
 		
-		  
+		  System.out.println("main");
 		 
 		 
 		 
@@ -149,6 +138,8 @@ public class Dispatcher extends HttpServlet{
 		for(Class clazz:classList) {
 			Object result=link(clazz,req.getRequestURI(),req);
 			System.out.println(result);
+			ViewResolver viewResolver=ViewResolverFactory.getViewResolver();
+			viewResolver.mappingView((String)result ,req,resp);
 		}
 	}
 
